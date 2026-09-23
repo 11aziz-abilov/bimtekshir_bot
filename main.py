@@ -8,10 +8,9 @@ from aiogram.types import BotCommand, BotCommandScopeDefault
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
-from config import BOT_TOKEN, ADMIN_ID, CHANNEL_ID, CHANNEL_USERNAME
+from config import BOT_TOKEN, ADMIN_ID
 from database import init_db
 from handlers import main_router
-from middlewares import SubscriptionMiddleware
 
 # Logging sozlamalari
 logging.basicConfig(
@@ -83,9 +82,6 @@ async def main() -> None:
     )
     dp = Dispatcher()
 
-    # Middlewarelarni ro'yxatdan o'tkazish
-    dp.message.outer_middleware(SubscriptionMiddleware())
-
     # Routerlarni ulash
     dp.include_router(main_router)
 
@@ -94,11 +90,6 @@ async def main() -> None:
         await set_bot_commands(bot)
     except Exception as e:
         logger.warning(f"Buyruqlar menyusini o'rnatishda ogohlantirish: {e}")
-
-    if CHANNEL_ID:
-        logger.info(f"Majburiy kanal tekshiruvi faol: chat_id={CHANNEL_ID} ({CHANNEL_USERNAME or 'havola sozlanmagan'})")
-    else:
-        logger.info("Majburiy kanal tekshiruvi o'chirilgan (CHANNEL_ID sozlanmagan).")
 
     logger.info(f"Bot muvaffaqiyatli ishga tushdi! Admin ID: {ADMIN_ID}")
 

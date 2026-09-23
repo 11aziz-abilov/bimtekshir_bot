@@ -12,8 +12,6 @@ from aiogram.types import (
     User
 )
 from database import get_test, save_submission
-from config import get_channel_url, CHANNEL_USERNAME
-from filters import is_subscribed
 from schedule_service import CLASSES, DAYS, get_schedule
 
 user_router = Router()
@@ -92,46 +90,6 @@ def get_schedule_view_keyboard(class_name: str) -> InlineKeyboardMarkup:
     )
 
 
-def get_subscription_keyboard() -> InlineKeyboardMarkup:
-    """Majburiy kanal a'zoligi uchun inline tugmalar."""
-    channel_url = get_channel_url()
-    keyboard = InlineKeyboardMarkup(
-        inline_keyboard=[
-            [
-                InlineKeyboardButton(text="📢 Kanalga a'zo bo'lish", url=channel_url)
-            ],
-            [
-                InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data="check_sub")
-            ]
-        ]
-    )
-    return keyboard
-
-
-async def send_subscription_prompt(message: Message) -> None:
-    """Foydalanuvchiga kanalga a'zo bo'lish talabini yuborish."""
-    channel_url = get_channel_url()
-    channel_display = CHANNEL_USERNAME or "Rasmiy kanalimiz"
-    if channel_display.startswith(("http://", "https://")):
-        slug = channel_display.rstrip("/").split("/")[-1]
-        if slug and not slug.startswith("+"):
-            channel_display = f"@{slug}"
-
-    text = (
-        "⚠️ <b>Botdan foydalanish uchun kanalimizga a'zo bo'ling!</b>\n\n"
-        "Bot imkoniyatlaridan to'liq foydalanish va test natijalarini bilish uchun "
-        "quyidagi rasmiy kanalimizga obuna bo'lishingiz lozim:\n\n"
-        f"👉 <b>Kanal:</b> <a href=\"{channel_url}\">{html.escape(channel_display)}</a>\n\n"
-        "<i>Kanalga a'zo bo'lgach, pastdagi <b>«✅ Obunani tekshirish»</b> tugmasini bosing.</i>"
-    )
-    await message.answer(
-        text,
-        reply_markup=get_subscription_keyboard(),
-        parse_mode="HTML",
-        disable_web_page_preview=True
-    )
-
-
 async def send_welcome_message(message: Message, user: Optional[User] = None) -> None:
     """Foydalanuvchiga botdan foydalanish yo'riqnomasini ko'rsatish."""
     target_user = user or message.from_user
@@ -154,33 +112,6 @@ async def send_welcome_message(message: Message, user: Optional[User] = None) ->
         reply_markup=get_main_menu_inline(),
         parse_mode="HTML"
     )
-
-
-@user_router.callback_query(F.data == "check_sub")
-async def callback_check_subscription(callback: CallbackQuery, bot: Bot) -> None:
-    """Foydalanuvchi 'Obunani tekshirish' tugmasini bosganda a'zolikni qayta tekshirish."""
-    user = callback.from_user
-    if not user:
-        await callback.answer("Foydalanuvchi aniqlanmadi.", show_alert=True)
-        return
-
-    subscribed = await is_subscribed(bot, user.id)
-    if subscribed:
-        await callback.answer("✅ Rahmat! Obunangiz tasdiqlandi.", show_alert=False)
-        try:
-            if callback.message:
-                await callback.message.delete()
-        except Exception:
-            pass
-
-        if callback.message:
-            await send_welcome_message(callback.message, user=user)
-    else:
-        await callback.answer(
-            "❌ Siz hali kanalga a'zo bo'lmadingiz!\n\n"
-            "Iltimos, avval kanalga obuna bo'ling va so'ng qayta tekshiring.",
-            show_alert=True
-        )
 
 
 @user_router.message(CommandStart())
