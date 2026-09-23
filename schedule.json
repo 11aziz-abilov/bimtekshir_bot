@@ -7,101 +7,101 @@
     "Juma": ["1. Ingliz tili", "2. Ingliz tili", "3. Tarixdan hikoyalar", "4. Matematika", "5. Jismoniy tarbiya", "6. Adabiyot"]
   },
   "5-B": {
-    "Dushanba": ["1. Kelajak soati", "2. Ona tili", "3. Informatika", "4. Tabiiy fan", "5. Matematika", "6. Rus tili"],
-    "Seshanba": ["1. Matematika", "2. Adabiyot", "3. Ingliz tili", "4. Jismoniy tarbiya", "5. San'at", "6. Tarixdan hikoyalar"],
-    "Chorshanba": ["1. Matematika", "2. Robototexnika", "3. Rus tili", "4. San'at", "5. Ona tili", "6. Ingliz tili"],
-    "Payshanba": ["1. Tabiiy fan", "2. Matematika", "3. Ona tili", "4. Tarbiya", "5. Matematika", "6. Ingliz tili"],
-    "Juma": ["1. Ingliz tili", "2. Matematika", "3. Tarixdan hikoyalar", "4. Jismoniy tarbiya", "5. Ingliz tili", "6. Adabiyot"]
+    "Dushanba": ["1. Kelajak soati", "2. Rus tili", "3. Ingliz tili", "4. Matematika", "5. Tarbiya", "6. San'at"],
+    "Seshanba": ["1. Matematika", "2. Informatika", "3. Jismoniy tarbiya", "4. Ona tili", "5. Ingliz tili", "6. Tabiiy fan"],
+    "Chorshanba": ["1. Matematika", "2. Tarixdan hikoyalar", "3. Adabiyot", "4. Ingliz tili", "5. Ingliz tili", "6. Rus tili"],
+    "Payshanba": ["1. Ingliz tili", "2. Matematika", "3. San'at", "4. Ona tili", "5. Matematika", "6. Tabiiy fan"],
+    "Juma": ["1. Matematika", "2. Tarixdan hikoyalar", "3. Matematika", "4. Robototexnika", "5. Adabiyot", "6. Jismoniy tarbiya"]
   },
   "6-A": {
-    "Dushanba": ["1. Kelajak soati", "2. Matematika", "3. Tarix", "4. Ingliz tili", "5. Tabiiy fan", "6. Adabiyot"],
-    "Seshanba": ["1. Informatika", "2. Matematika", "3. Rus tili", "4. Ona tili", "5. Jismoniy tarbiya", "6. Ingliz tili"],
-    "Chorshanba": ["1. Matematika", "2. Tarix", "3. San'at", "4. Ona tili", "5. Ingliz tili", "6. Robototexnika"],
-    "Payshanba": ["1. Ona tili", "2. Matematika", "3. Tabiiy fan", "4. Rus tili", "5. San'at", "6. Tarbiya"],
-    "Juma": ["1. Jismoniy tarbiya", "2. Adabiyot", "3. Ingliz tili", "4. Matematika", "5. Matematika", "6. Tarix"]
+    "Dushanba": ["1. Kelajak soati", "2. Matematika", "3. Tabiiy fan", "4. Ona tili", "5. Ingliz tili", "6. Matematika", "7. Ingliz tili"],
+    "Seshanba": ["1. Matematika", "2. Qadimgi dunyo tarixi", "3. Rus tili", "4. Ingliz tili", "5. Robototexnika", "6. Adabiyot"],
+    "Chorshanba": ["1. Matematika", "2. Ingliz tili", "3. Jismoniy tarbiya", "4. Tabiiy fan", "5. San'at", "6. Informatika"],
+    "Payshanba": ["1. Matematika", "2. Ingliz tili", "3. Tarbiya", "4. Qadimgi dunyo tarixi", "5. Ona tili", "6. Jismoniy tarbiya"],
+    "Juma": ["1. Rus tili", "2. Matematika", "3. Matematika", "4. Adabiyot", "5. Tabiiy fan", "6. San'at"]
   },
   "6-B": {
-    "Dushanba": ["1. Kelajak soati", "2. Ingliz tili", "3. Ona tili", "4. Matematika", "5. Adabiyot", "6. Tabiiy fan"],
-    "Seshanba": ["1. Rus tili", "2. Informatika", "3. Ona tili", "4. Matematika", "5. Ingliz tili", "6. Jismoniy tarbiya"],
-    "Chorshanba": ["1. Tarix", "2. Matematika", "3. Ona tili", "4. Ingliz tili", "5. San'at", "6. Rus tili"],
-    "Payshanba": ["1. Matematika", "2. Ona tili", "3. Rus tili", "4. Tabiiy fan", "5. Tarbiya", "6. San'at"],
-    "Juma": ["1. Adabiyot", "2. Jismoniy tarbiya", "3. Matematika", "4. Ingliz tili", "5. Tarix", "6. Matematika"]
+    "Dushanba": ["1. Kelajak soati", "2. Jismoniy tarbiya", "3. Matematika", "4. Matematika", "5. San'at", "6. Tabiiy fan"],
+    "Seshanba": ["1. Ingliz tili", "2. Matematika", "3. Matematika", "4. Robototexnika", "5. Qadimgi dunyo tarixi", "6. San'at"],
+    "Chorshanba": ["1. Ona tili", "2. Matematika", "3. Rus tili", "4. Informatika", "5. Matematika", "6. Ingliz tili", "7. Qadimgi dunyo tarixi"],
+    "Payshanba": ["1. Tabiiy fan", "2. Tarbiya", "3. Ona tili", "4. Ingliz tili", "5. Ingliz tili", "6. Adabiyot"],
+    "Juma": ["1. Matematika", "2. Jismoniy tarbiya", "3. Rus tili", "4. Ingliz tili", "5. Adabiyot", "6. Tabiiy fan"]
   },
   "7-A": {
-    "Dushanba": ["1. Kelajak soati", "2. Fizika", "3. Biologiya", "4. Ona tili", "5. Algebra", "6. Ingliz tili", "7. Geometriya"],
-    "Seshanba": ["1. Informatika", "2. Adabiyot", "3. Rus tili", "4. Geografiya", "5. Ingliz tili", "6. Jismoniy tarbiya", "7. Tarix"],
-    "Chorshanba": ["1. Kimyo", "2. Fizika", "3. Algebra", "4. O'zbekiston tarixi", "5. San'at", "6. Ingliz tili"],
-    "Payshanba": ["1. Rus tili", "2. Geometriya", "3. Algebra", "4. Ona tili", "5. Kimyo", "6. Tarbiya"],
-    "Juma": ["1. Ingliz tili", "2. Jahon tarixi", "3. Biologiya", "4. Geografiya", "5. Adabiyot", "6. Jismoniy tarbiya"]
+    "Dushanba": ["1. Kelajak soati", "2. Informatika", "3. O'zbekiston tarixi", "4. Tarbiya", "5. Algebra", "6. Fizika", "7. Robototexnika"],
+    "Seshanba": ["1. Algebra", "2. Jismoniy tarbiya", "3. Adabiyot", "4. Geografiya", "5. Rus tili", "6. Ingliz tili", "7. Ona tili"],
+    "Chorshanba": ["1. Fizika", "2. Kimyo", "3. Ingliz tili", "4. Geometriya", "5. Biologiya", "6. Ona tili", "7. San'at"],
+    "Payshanba": ["1. Biologiya", "2. O'zbekiston tarixi", "3. Algebra", "4. Jismoniy tarbiya", "5. Jahon tarixi", "6. Geometriya", "7. Ingliz tili"],
+    "Juma": ["1. Ingliz tili", "2. Adabiyot", "3. Algebra", "4. Geometriya", "5. Rus tili", "6. Fizika"]
   },
   "7-T": {
-    "Dushanba": ["1. Kelajak soati", "2. Biologiya", "3. Fizika", "4. Algebra", "5. Ona tili", "6. Geometriya", "7. Ingliz tili"],
-    "Seshanba": ["1. Rus tili", "2. Informatika", "3. Geografiya", "4. Adabiyot", "5. Tarix", "6. Ingliz tili", "7. Jismoniy tarbiya"],
-    "Chorshanba": ["1. Fizika", "2. Kimyo", "3. O'zbekiston tarixi", "4. Algebra", "5. Ingliz tili", "6. San'at"],
-    "Payshanba": ["1. Geometriya", "2. Rus tili", "3. Ona tili", "4. Algebra", "5. Tarbiya", "6. Kimyo"],
-    "Juma": ["1. Jahon tarixi", "2. Ingliz tili", "3. Geografiya", "4. Biologiya", "5. Jismoniy tarbiya", "6. Adabiyot"]
+    "Dushanba": ["1. Kelajak soati", "2. Biologiya", "3. Matematika", "4. Ona tili", "5. Ingliz tili", "6. Jismoniy tarbiya", "7. Kimyo"],
+    "Seshanba": ["1. Ingliz tili", "2. Kimyo", "3. Informatika", "4. Biologiya", "5. San'at", "6. Jahon tarixi", "7. Geografiya"],
+    "Chorshanba": ["1. O'zbekiston tarixi", "2. Robototexnika", "3. Adabiyot", "4. Rus tili", "5. Matematika", "6. Tarbiya", "7. Fizika"],
+    "Payshanba": ["1. Ingliz tili", "2. Jismoniy tarbiya", "3. Kimyo", "4. Biologiya", "5. Ona tili", "6. Matematika", "7. Matematika"],
+    "Juma": ["1. Kimyo", "2. Biologiya", "3. O'zbekiston tarixi", "4. Adabiyot", "5. Matematika", "6. Ingliz tili", "7. Rus tili"]
   },
   "8-A": {
-    "Dushanba": ["1. Kelajak soati", "2. Algebra", "3. Ingliz tili", "4. Fizika", "5. Kimyo", "6. Ona tili", "7. Biologiya"],
-    "Seshanba": ["1. Adabiyot", "2. Geometriya", "3. Fizika", "4. Ingliz tili", "5. Geografiya", "6. Rus tili", "7. Jismoniy tarbiya"],
-    "Chorshanba": ["1. Ona tili", "2. O'zbekiston tarixi", "3. Kimyo", "4. Algebra", "5. Informatika", "6. Ingliz tili"],
-    "Payshanba": ["1. Geometriya", "2. Biologiya", "3. Rus tili", "4. Tarbiya", "5. Jahon tarixi", "6. Algebra"],
-    "Juma": ["1. Ingliz tili", "2. Chizmachilik", "3. Jismoniy tarbiya", "4. Davlat va huquq", "5. Geografiya", "6. Adabiyot"]
+    "Dushanba": ["1. Kelajak soati", "2. Algebra", "3. Geografiya", "4. Fizika", "5. Ona tili", "6. Geometriya", "7. Jismoniy tarbiya"],
+    "Seshanba": ["1. Biologiya", "2. O'zbekiston tarixi", "3. Ingliz tili", "4. Jahon tarixi", "5. Kimyo", "6. Algebra", "7. Informatika"],
+    "Chorshanba": ["1. Biologiya", "2. Rus tili", "3. Algebra", "4. Adabiyot", "5. Geometriya", "6. Fizika", "7. Jismoniy tarbiya"],
+    "Payshanba": ["1. Algebra", "2. Ingliz tili", "3. Ingliz tili", "4. Geografiya", "5. Tarbiya", "6. San'at", "7. Rus tili"],
+    "Juma": ["1. Fizika", "2. Ona tili", "3. Adabiyot", "4. O'zbekiston tarixi", "5. Ingliz tili", "6. Geometriya", "7. Robototexnika"]
   },
   "8-T": {
-    "Dushanba": ["1. Kelajak soati", "2. Ingliz tili", "3. Algebra", "4. Kimyo", "5. Fizika", "6. Biologiya", "7. Ona tili"],
-    "Seshanba": ["1. Geometriya", "2. Adabiyot", "3. Ingliz tili", "4. Fizika", "5. Rus tili", "6. Geografiya", "7. Jismoniy tarbiya"],
-    "Chorshanba": ["1. O'zbekiston tarixi", "2. Ona tili", "3. Algebra", "4. Kimyo", "5. Ingliz tili", "6. Informatika"],
-    "Payshanba": ["1. Biologiya", "2. Geometriya", "3. Tarbiya", "4. Rus tili", "5. Algebra", "6. Jahon tarixi"],
-    "Juma": ["1. Chizmachilik", "2. Ingliz tili", "3. Davlat va huquq", "4. Jismoniy tarbiya", "5. Adabiyot", "6. Geografiya"]
+    "Dushanba": ["1. Kelajak soati", "2. Kimyo", "3. Ona tili", "4. Algebra", "5. O'zbekiston tarixi", "6. Biologiya", "7. Tarbiya"],
+    "Seshanba": ["1. Geografiya", "2. Ingliz tili", "3. Kimyo", "4. Adabiyot", "5. Ingliz tili", "6. Rus tili", "7. Geometriya"],
+    "Chorshanba": ["1. Kimyo", "2. Algebra", "3. Biologiya", "4. Ingliz tili", "5. Jismoniy tarbiya", "6. Biologiya", "7. Robototexnika"],
+    "Payshanba": ["1. O'zbekiston tarixi", "2. Ona tili", "3. Biologiya", "4. Algebra", "5. Ingliz tili", "6. Informatika", "7. Jismoniy tarbiya"],
+    "Juma": ["1. Geometriya", "2. Rus tili", "3. Fizika", "4. Kimyo", "5. San'at", "6. Adabiyot", "7. Jahon tarixi"]
   },
   "9-A": {
-    "Dushanba": ["1. Kelajak soati", "2. Kimyo", "3. Ona tili", "4. Geometriya", "5. Ingliz tili", "6. Fizika", "7. Biologiya"],
-    "Seshanba": ["1. Geografiya", "2. Fizika", "3. Adabiyot", "4. Rus tili", "5. Algebra", "6. Jismoniy tarbiya", "7. Ingliz tili"],
-    "Chorshanba": ["1. Ingliz tili", "2. Algebra", "3. Ona tili", "4. O'zbekiston tarixi", "5. Kimyo", "6. Informatika"],
-    "Payshanba": ["1. Rus tili", "2. Algebra", "3. Geometriya", "4. Biologiya", "5. Jahon tarixi", "6. Tarbiya"],
-    "Juma": ["1. Jismoniy tarbiya", "2. Ingliz tili", "3. Chizmachilik", "4. Adabiyot", "5. Davlat va huquq", "6. Geografiya"]
+    "Dushanba": ["1. Kelajak soati", "2. Fizika", "3. Algebra", "4. Ingliz tili", "5. Geometriya", "6. Rus tili", "7. Ona tili"],
+    "Seshanba": ["1. O'zbekiston tarixi", "2. Algebra", "3. Geografiya", "4. Geometriya", "5. Adabiyot", "6. Biologiya", "7. Ingliz tili"],
+    "Chorshanba": ["1. Sun'iy intellekt", "2. Algebra", "3. Fizika", "4. Jahon tarixi", "5. Informatika", "6. Jismoniy tarbiya", "7. Tarbiya"],
+    "Payshanba": ["1. Geografiya", "2. Ona tili", "3. Algebra", "4. Informatika", "5. San'at", "6. Rus tili", "7. Ingliz tili"],
+    "Juma": ["1. O'zbekiston tarixi", "2. Geometriya", "3. Ingliz tili", "4. Fizika", "5. Adabiyot", "6. Kimyo", "7. Jismoniy tarbiya"]
   },
   "9-B": {
-    "Dushanba": ["1. Kelajak soati", "2. Ingliz tili", "3. Biologiya", "4. Kimyo", "5. Ona tili", "6. Geometriya", "7. Fizika"],
-    "Seshanba": ["1. Fizika", "2. Geografiya", "3. Rus tili", "4. Adabiyot", "5. Ingliz tili", "6. Algebra", "7. Jismoniy tarbiya"],
-    "Chorshanba": ["1. Algebra", "2. Ingliz tili", "3. O'zbekiston tarixi", "4. Ona tili", "5. Informatika", "6. Kimyo"],
-    "Payshanba": ["1. Algebra", "2. Rus tili", "3. Biologiya", "4. Geometriya", "5. Tarbiya", "6. Jahon tarixi"],
-    "Juma": ["1. Ingliz tili", "2. Jismoniy tarbiya", "3. Adabiyot", "4. Chizmachilik", "5. Geografiya", "6. Davlat va huquq"]
+    "Dushanba": ["1. Kelajak soati", "2. Algebra", "3. Ingliz tili", "4. Geometriya", "5. Jismoniy tarbiya", "6. Ona tili", "7. Fizika"],
+    "Seshanba": ["1. Kimyo", "2. Geografiya", "3. Adabiyot", "4. San'at", "5. Algebra", "6. O'zbekiston tarixi", "7. Ingliz tili"],
+    "Chorshanba": ["1. Algebra", "2. Ingliz tili", "3. Geometriya", "4. Tarbiya", "5. Fizika", "6. Jahon tarixi", "7. Rus tili"],
+    "Payshanba": ["1. Rus tili", "2. Geometriya", "3. Geografiya", "4. Algebra", "5. Jismoniy tarbiya", "6. Ona tili", "7. Informatika"],
+    "Juma": ["1. Sun'iy intellekt", "2. Adabiyot", "3. Biologiya", "4. Ingliz tili", "5. O'zbekiston tarixi", "6. Informatika", "7. Fizika"]
   },
   "9-T": {
-    "Dushanba": ["1. Kelajak soati", "2. Biologiya", "3. Kimyo", "4. Ingliz tili", "5. Geometriya", "6. Ona tili", "7. Fizika"],
-    "Seshanba": ["1. Fizika", "2. Rus tili", "3. Geografiya", "4. Ingliz tili", "5. Jismoniy tarbiya", "6. Adabiyot", "7. Algebra"],
-    "Chorshanba": ["1. O'zbekiston tarixi", "2. Kimyo", "3. Algebra", "4. Informatika", "5. Ingliz tili", "6. Ona tili"],
-    "Payshanba": ["1. Biologiya", "2. Geometriya", "3. Algebra", "4. Rus tili", "5. Tarbiya", "6. Jahon tarixi"],
-    "Juma": ["1. Jismoniy tarbiya", "2. Chizmachilik", "3. Ingliz tili", "4. Davlat va huquq", "5. Geografiya", "6. Adabiyot"]
+    "Dushanba": ["1. Kelajak soati", "2. Ona tili", "3. O'zbekiston tarixi", "4. Biologiya", "5. Kimyo", "6. Ingliz tili", "7. Algebra"],
+    "Seshanba": ["1. Rus tili", "2. Adabiyot", "3. Geometriya", "4. Ingliz tili", "5. Geografiya", "6. Jismoniy tarbiya", "7. Jahon tarixi"],
+    "Chorshanba": ["1. Ona tili", "2. Jismoniy tarbiya", "3. Kimyo", "4. Biologiya", "5. Ingliz tili", "6. Algebra", "7. Sun'iy intellekt"],
+    "Payshanba": ["1. O'zbekiston tarixi", "2. Kimyo", "3. Algebra", "4. Kimyo", "5. Fizika", "6. Biologiya", "7. Tarbiya"],
+    "Juma": ["1. Adabiyot", "2. Ingliz tili", "3. Informatika", "4. San'at", "5. Biologiya", "6. Rus tili", "7. Geometriya"]
   },
   "10-A": {
-    "Dushanba": ["1. Kelajak soati", "2. Ona tili", "3. Algebra", "4. Biologiya", "5. Fizika", "6. Kimyo", "7. Ingliz tili"],
-    "Seshanba": ["1. Adabiyot", "2. Ingliz tili", "3. Geometriya", "4. Kimyo", "5. O'zbekiston tarixi", "6. Rus tili", "7. CHQBT"],
-    "Chorshanba": ["1. Algebra", "2. Informatika", "3. Ingliz tili", "4. Biologiya", "5. Fizika", "6. Geografiya"],
-    "Payshanba": ["1. Fizika", "2. Rus tili", "3. Jahon tarixi", "4. Ona tili", "5. Algebra", "6. Geometriya"],
-    "Juma": ["1. Ingliz tili", "2. Tarbiya", "3. Jismoniy tarbiya", "4. Adabiyot", "5. CHQBT", "6. Davlat va huquq"]
+    "Dushanba": ["1. Kelajak soati", "2. Algebra", "3. Informatika", "4. Ingliz tili", "5. Ona tili", "6. Geometriya"],
+    "Seshanba": ["1. Informatika", "2. Rus tili", "3. Fizika", "4. Algebra", "5. Adabiyot", "6. CHYOT", "7. CHYOT"],
+    "Chorshanba": ["1. Algebra", "2. Fizika", "3. Tarbiya", "4. Jismoniy tarbiya", "5. O'zbekiston tarixi", "6. Ingliz tili"],
+    "Payshanba": ["1. Algebra", "2. Geometriya", "3. Rus tili", "4. Ingliz tili", "5. Jahon tarixi", "6. Fizika", "7. Fizika"],
+    "Juma": ["1. Ona tili", "2. Geometriya", "3. Ingliz tili", "4. Adabiyot", "5. Fizika", "6. O'zbekiston tarixi"]
   },
   "10-T": {
-    "Dushanba": ["1. Kelajak soati", "2. Algebra", "3. Ona tili", "4. Fizika", "5. Biologiya", "6. Ingliz tili", "7. Kimyo"],
-    "Seshanba": ["1. Ingliz tili", "2. Adabiyot", "3. Kimyo", "4. Geometriya", "5. Rus tili", "6. CHQBT", "7. O'zbekiston tarixi"],
-    "Chorshanba": ["1. Informatika", "2. Algebra", "3. Biologiya", "4. Ingliz tili", "5. Geografiya", "6. Fizika"],
-    "Payshanba": ["1. Rus tili", "2. Fizika", "3. Ona tili", "4. Jahon tarixi", "5. Geometriya", "6. Algebra"],
-    "Juma": ["1. Tarbiya", "2. Ingliz tili", "3. CHQBT", "4. Jismoniy tarbiya", "5. Davlat va huquq", "6. Adabiyot"]
+    "Dushanba": ["1. Kelajak soati", "2. Ingliz tili", "3. Biologiya", "4. Kimyo", "5. Biologiya", "6. Kimyo", "7. Geometriya"],
+    "Seshanba": ["1. O'zbekiston tarixi", "2. Ona tili", "3. Biologiya", "4. Rus tili", "5. Adabiyot", "6. Algebra", "7. Biologiya"],
+    "Chorshanba": ["1. Ingliz tili", "2. Tarbiya", "3. Geometriya", "4. Jahon tarixi", "5. Kimyo", "6. Kimyo", "7. Algebra"],
+    "Payshanba": ["1. Ona tili", "2. Rus tili", "3. CHYOT", "4. CHYOT", "5. Biologiya", "6. Ingliz tili"],
+    "Juma": ["1. O'zbekiston tarixi", "2. Informatika", "3. Kimyo", "4. Jismoniy tarbiya", "5. Kimyo", "6. Algebra", "7. Adabiyot"]
   },
   "11-A": {
-    "Dushanba": ["1. Kelajak soati", "2. Geometriya", "3. Fizika", "4. Ingliz tili", "5. Kimyo", "6. Biologiya", "7. Ona tili"],
-    "Seshanba": ["1. CHQBT", "2. O'zbekiston tarixi", "3. Fizika", "4. Algebra", "5. Ingliz tili", "6. Rus tili", "7. Adabiyot"],
-    "Chorshanba": ["1. Kimyo", "2. Biologiya", "3. Fizika", "4. Informatika", "5. Algebra", "6. Ingliz tili"],
-    "Payshanba": ["1. Algebra", "2. Geometriya", "3. Rus tili", "4. Jahon tarixi", "5. Ona tili", "6. Ingliz tili"],
-    "Juma": ["1. CHQBT", "2. Adabiyot", "3. Tarbiya", "4. Jismoniy tarbiya", "5. Davlat va huquq", "6. Ingliz tili"]
+    "Dushanba": ["1. Kelajak soati", "2. Ona tili", "3. Fizika", "4. Adabiyot", "5. Fizika", "6. Algebra"],
+    "Seshanba": ["1. Algebra", "2. Ingliz tili", "3. O'zbekiston tarixi", "4. Jismoniy tarbiya", "5. Fizika", "6. Informatika"],
+    "Chorshanba": ["1. Ona tili", "2. O'zbekiston tarixi", "3. Ingliz tili", "4. Geometriya", "5. Tarbiya", "6. CHYOT", "7. CHYOT"],
+    "Payshanba": ["1. Algebra", "2. Fizika", "3. Ingliz tili", "4. Rus tili", "5. Geometriya", "6. Jahon tarixi"],
+    "Juma": ["1. Algebra", "2. Fizika", "3. Geometriya", "4. Rus tili", "5. Informatika", "6. Adabiyot", "7. Ingliz tili"]
   },
   "11-T": {
-    "Dushanba": ["1. Kelajak soati", "2. Fizika", "3. Geometriya", "4. Biologiya", "5. Ingliz tili", "6. Kimyo", "7. Ona tili"],
-    "Seshanba": ["1. O'zbekiston tarixi", "2. CHQBT", "3. Algebra", "4. Fizika", "5. Rus tili", "6. Adabiyot", "7. Ingliz tili"],
-    "Chorshanba": ["1. Biologiya", "2. Kimyo", "3. Informatika", "4. Fizika", "5. Ingliz tili", "6. Algebra"],
-    "Payshanba": ["1. Geometriya", "2. Algebra", "3. Jahon tarixi", "4. Rus tili", "5. Ingliz tili", "6. Ona tili"],
-    "Juma": ["1. Adabiyot", "2. CHQBT", "3. Jismoniy tarbiya", "4. Tarbiya", "5. Ingliz tili", "6. Davlat va huquq"]
+    "Dushanba": ["1. Kelajak soati", "2. Tarbiya", "3. Ona tili", "4. Kimyo", "5. Algebra", "6. Informatika", "7. O'zbekiston tarixi"],
+    "Seshanba": ["1. Kimyo", "2. Biologiya", "3. Ingliz tili", "4. Algebra", "5. Biologiya", "6. Adabiyot", "7. Ingliz tili"],
+    "Chorshanba": ["1. O'zbekiston tarixi", "2. Biologiya", "3. Rus tili", "4. Geometriya", "5. Kimyo", "6. Kimyo"],
+    "Payshanba": ["1. Kimyo", "2. Ona tili", "3. Jismoniy tarbiya", "4. Algebra", "5. CHYOT", "6. CHYOT", "7. Biologiya"],
+    "Juma": ["1. Biologiya", "2. Kimyo", "3. Rus tili", "4. Geometriya", "5. Ingliz tili", "6. Jahon tarixi", "7. Adabiyot"]
   }
 }
