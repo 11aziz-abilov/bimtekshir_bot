@@ -1,32 +1,325 @@
 import html
-from aiogram import Router, F
+from typing import Optional
+from aiogram import Router, F, Bot
 from aiogram.filters import CommandStart, Command
-from aiogram.types import Message
+from aiogram.types import (
+    Message,
+    CallbackQuery,
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    ReplyKeyboardMarkup,
+    KeyboardButton,
+    User
+)
 from database import get_test, save_submission
+from config import get_channel_url, CHANNEL_USERNAME
+from filters import is_subscribed
+from schedule_service import CLASSES, DAYS, get_schedule
 
 user_router = Router()
+
+TEST_INSTRUCTION_TEXT = (
+    "📝 <b>TEST TEKSHIRISH TARTIBI:</b>\n\n"
+    "Javoblarni quyidagi formatda yuboring:\n"
+    "<code>&lt;test_kodi&gt;*&lt;javoblar&gt;</code>\n\n"
+    "📌 <b>Masalan:</b>\n"
+    "<code>101*abcdabcdabcdabcdabcd</code>\n\n"
+    "🔹 <i>Harflar katta yoki kichik bo'lishining farqi yo'q (masalan: <b>A</b> yoki <b>a</b>).</i>\n"
+    "🔹 <i>Javoblar orasidagi bo'shliqlar (probellar) avtomatik tozalanadi.</i>\n\n"
+    "Boshlash uchun test kodi va javoblaringizni yuboring! 🎯"
+)
+
+SCHEDULE_PROMPT_TEXT = (
+    "📅 <b>DARS JADVALI</b>\n\n"
+    "Dars jadvalini ko'rish uchun sinfni tanlang:"
+)
+
+
+def get_main_menu_keyboard() -> ReplyKeyboardMarkup:
+    """Asosiy pastki menyu tugmalari."""
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [
+                KeyboardButton(text="📝 Test tekshirish"),
+                KeyboardButton(text="📅 Dars jadvali")
+            ]
+        ],
+        resize_keyboard=True
+    )
+
+
+def get_main_menu_inline() -> InlineKeyboardMarkup:
+    """Asosiy inline menyu tugmalari."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="📝 Test tekshirish", callback_data="menu_test"),
+                InlineKeyboardButton(text="📅 Dars jadvali", callback_data="menu_schedule")
+            ]
+        ]
+    )
+
+
+def get_classes_keyboard() -> InlineKeyboardMarkup:
+    """Sinflar ro'yxatini chiqaruvchi inline klaviatura (3 tadan qatorda)."""
+    rows = []
+    for i in range(0, len(CLASSES), 3):
+        chunk = CLASSES[i:i + 3]
+        rows.append([InlineKeyboardButton(text=c, callback_data=f"class:{c}") for c in chunk])
+    rows.append([InlineKeyboardButton(text="⬅️ Bosh menyu", callback_data="back_to_main")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def get_days_keyboard(class_name: str) -> InlineKeyboardMarkup:
+    """Tanlangan sinf uchun hafta kunlari klaviaturasi (2 tadan qatorda)."""
+    rows = []
+    for i in range(0, len(DAYS), 2):
+        chunk = DAYS[i:i + 2]
+        rows.append([InlineKeyboardButton(text=d, callback_data=f"day:{class_name}:{d}") for d in chunk])
+    rows.append([InlineKeyboardButton(text="⬅️ Orqaga", callback_data="menu_schedule")])
+    return InlineKeyboardMarkup(inline_keyboard=rows)
+
+
+def get_schedule_view_keyboard(class_name: str) -> InlineKeyboardMarkup:
+    """Dars jadvali ko'rilayotganda navigatsiya tugmalari."""
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="⬅️ Boshqa kun", callback_data=f"class:{class_name}"),
+                InlineKeyboardButton(text="🏫 Barcha sinflar", callback_data="menu_schedule")
+            ]
+        ]
+    )
+
+
+def get_subscription_keyboard() -> InlineKeyboardMarkup:
+    """Majburiy kanal a'zoligi uchun inline tugmalar."""
+    channel_url = get_channel_url()
+    keyboard = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [
+                InlineKeyboardButton(text="📢 Kanalga a'zo bo'lish", url=channel_url)
+            ],
+            [
+                InlineKeyboardButton(text="✅ Obunani tekshirish", callback_data="check_sub")
+            ]
+        ]
+    )
+    return keyboard
+
+
+async def send_subscription_prompt(message: Message) -> None:
+    """Foydalanuvchiga kanalga a'zo bo'lish talabini yuborish."""
+    channel_url = get_channel_url()
+    channel_display = CHANNEL_USERNAME or "Rasmiy kanalimiz"
+    if channel_display.startswith(("http://", "https://")):
+        slug = channel_display.rstrip("/").split("/")[-1]
+        if slug and not slug.startswith("+"):
+            channel_display = f"@{slug}"
+
+    text = (
+        "⚠️ <b>Botdan foydalanish uchun kanalimizga a'zo bo'ling!</b>\n\n"
+        "Bot imkoniyatlaridan to'liq foydalanish va test natijalarini bilish uchun "
+        "quyidagi rasmiy kanalimizga obuna bo'lishingiz lozim:\n\n"
+        f"👉 <b>Kanal:</b> <a href=\"{channel_url}\">{html.escape(channel_display)}</a>\n\n"
+        "<i>Kanalga a'zo bo'lgach, pastdagi <b>«✅ Obunani tekshirish»</b> tugmasini bosing.</i>"
+    )
+    await message.answer(
+        text,
+        reply_markup=get_subscription_keyboard(),
+        parse_mode="HTML",
+        disable_web_page_preview=True
+    )
+
+
+async def send_welcome_message(message: Message, user: Optional[User] = None) -> None:
+    """Foydalanuvchiga botdan foydalanish yo'riqnomasini ko'rsatish."""
+    target_user = user or message.from_user
+    name = html.escape(target_user.full_name if target_user else "Foydalanuvchi")
+
+    text = (
+        f"Assalomu alaykum, <b>{name}</b>!\n\n"
+        f"🤖 <b>Test Tekshiruvchi va Dars Jadvali Botiga xush kelibsiz!</b>\n\n"
+        f"Quyidagi bo'limlardan birini tanlang:\n"
+        f"• <b>📝 Test tekshirish</b> — test javoblarini tekshirish va reyting\n"
+        f"• <b>📅 Dars jadvali</b> — sinflar bo'yicha dars jadvalini ko'rish"
+    )
+    await message.answer(
+        text,
+        reply_markup=get_main_menu_keyboard(),
+        parse_mode="HTML"
+    )
+    await message.answer(
+        "👇 <i>Kerakli bo'limni tanlang:</i>",
+        reply_markup=get_main_menu_inline(),
+        parse_mode="HTML"
+    )
+
+
+@user_router.callback_query(F.data == "check_sub")
+async def callback_check_subscription(callback: CallbackQuery, bot: Bot) -> None:
+    """Foydalanuvchi 'Obunani tekshirish' tugmasini bosganda a'zolikni qayta tekshirish."""
+    user = callback.from_user
+    if not user:
+        await callback.answer("Foydalanuvchi aniqlanmadi.", show_alert=True)
+        return
+
+    subscribed = await is_subscribed(bot, user.id)
+    if subscribed:
+        await callback.answer("✅ Rahmat! Obunangiz tasdiqlandi.", show_alert=False)
+        try:
+            if callback.message:
+                await callback.message.delete()
+        except Exception:
+            pass
+
+        if callback.message:
+            await send_welcome_message(callback.message, user=user)
+    else:
+        await callback.answer(
+            "❌ Siz hali kanalga a'zo bo'lmadingiz!\n\n"
+            "Iltimos, avval kanalga obuna bo'ling va so'ng qayta tekshiring.",
+            show_alert=True
+        )
 
 
 @user_router.message(CommandStart())
 @user_router.message(Command("help"))
 async def cmd_start(message: Message) -> None:
     """Foydalanuvchiga botdan foydalanish yo'riqnomasini ko'rsatish."""
-    name = html.escape(message.from_user.full_name if message.from_user else "Foydalanuvchi")
-    
+    await send_welcome_message(message, user=message.from_user)
+
+
+@user_router.message(F.text == "📝 Test tekshirish")
+async def msg_test_instructions(message: Message) -> None:
+    """'Test tekshirish' tugmasi bosilganda yo'riqnoma ko'rsatish."""
+    await message.answer(TEST_INSTRUCTION_TEXT, parse_mode="HTML")
+
+
+@user_router.callback_query(F.data == "menu_test")
+async def cb_test_instructions(callback: CallbackQuery) -> None:
+    """Inline 'Test tekshirish' tugmasi bosilganda yo'riqnoma ko'rsatish."""
+    await callback.answer()
+    back_kb = InlineKeyboardMarkup(
+        inline_keyboard=[[InlineKeyboardButton(text="⬅️ Bosh menyu", callback_data="back_to_main")]]
+    )
+    try:
+        await callback.message.edit_text(TEST_INSTRUCTION_TEXT, reply_markup=back_kb, parse_mode="HTML")
+    except Exception:
+        await callback.message.answer(TEST_INSTRUCTION_TEXT, reply_markup=back_kb, parse_mode="HTML")
+
+
+@user_router.message(F.text == "📅 Dars jadvali")
+async def msg_schedule_menu(message: Message) -> None:
+    """'Dars jadvali' tugmasi bosilganda sinflar ro'yxatini chiqarish."""
     await message.answer(
-        f"Assalomu alaykum, <b>{name}</b>!\n\n"
-        f"🤖 <b>Test Tekshiruvchi Botga xush kelibsiz!</b>\n\n"
-        f"Ushbu bot orqali siz test natijalaringizni avtomatik va tezkor tekshirib olishingiz mumkin.\n\n"
-        f"📝 <b>Javoblarni yuborish tartibi:</b>\n"
-        f"Javoblarni quyidagi formatda yuboring:\n"
-        f"<code>&lt;test_kodi&gt;*&lt;javoblar&gt;</code>\n\n"
-        f"📌 <b>Masalan:</b>\n"
-        f"<code>101*abcdabcdabcdabcdabcd</code>\n\n"
-        f"🔹 <i>Harflar katta yoki kichik bo'lishining farqi yo'q (masalan: <b>A</b> yoki <b>a</b>).</i>\n"
-        f"🔹 <i>Javoblar orasidagi bo'shliqlar (probellar) avtomatik tozalanadi.</i>\n\n"
-        f"Boshlash uchun test kodi va javoblaringizni yuboring! 🎯",
+        SCHEDULE_PROMPT_TEXT,
+        reply_markup=get_classes_keyboard(),
         parse_mode="HTML"
     )
+
+
+@user_router.callback_query(F.data == "menu_schedule")
+async def cb_schedule_menu(callback: CallbackQuery) -> None:
+    """Inline 'Dars jadvali' bosilganda sinflar ro'yxatini chiqarish."""
+    await callback.answer()
+    try:
+        await callback.message.edit_text(
+            SCHEDULE_PROMPT_TEXT,
+            reply_markup=get_classes_keyboard(),
+            parse_mode="HTML"
+        )
+    except Exception:
+        await callback.message.answer(
+            SCHEDULE_PROMPT_TEXT,
+            reply_markup=get_classes_keyboard(),
+            parse_mode="HTML"
+        )
+
+
+@user_router.callback_query(F.data == "back_to_main")
+async def cb_back_to_main(callback: CallbackQuery) -> None:
+    """Bosh menyuga qaytish."""
+    await callback.answer()
+    text = (
+        "🤖 <b>Asosiy menyu</b>\n\n"
+        "Quyidagi bo'limlardan birini tanlang:"
+    )
+    try:
+        await callback.message.edit_text(
+            text,
+            reply_markup=get_main_menu_inline(),
+            parse_mode="HTML"
+        )
+    except Exception:
+        await callback.message.answer(
+            text,
+            reply_markup=get_main_menu_inline(),
+            parse_mode="HTML"
+        )
+
+
+@user_router.callback_query(F.data.startswith("class:"))
+async def cb_select_class(callback: CallbackQuery) -> None:
+    """Sinf tanlanganda hafta kunlarini chiqarish."""
+    await callback.answer()
+    class_name = callback.data.split("class:")[1].strip()
+    text = (
+        f"🏫 <b>{html.escape(class_name)} sinfi</b>\n\n"
+        "Dars jadvalini ko'rish uchun hafta kunini tanlang:"
+    )
+    try:
+        await callback.message.edit_text(
+            text,
+            reply_markup=get_days_keyboard(class_name),
+            parse_mode="HTML"
+        )
+    except Exception:
+        await callback.message.answer(
+            text,
+            reply_markup=get_days_keyboard(class_name),
+            parse_mode="HTML"
+        )
+
+
+@user_router.callback_query(F.data.startswith("day:"))
+async def cb_select_day(callback: CallbackQuery) -> None:
+    """Kun tanlanganda darslar ro'yxatini chiqarish."""
+    await callback.answer()
+    parts = callback.data.split(":", 2)
+    if len(parts) < 3:
+        return
+    class_name = parts[1].strip()
+    day_name = parts[2].strip()
+
+    lessons = get_schedule(class_name, day_name)
+    if lessons:
+        lessons_list = "\n".join(f"  {html.escape(lesson)}" for lesson in lessons)
+        text = (
+            f"📅 <b>{html.escape(class_name)} sinfi — {html.escape(day_name)}</b>\n\n"
+            f"📚 <b>Darslar ro'yxati:</b>\n"
+            f"{lessons_list}"
+        )
+    else:
+        text = (
+            f"📅 <b>{html.escape(class_name)} sinfi — {html.escape(day_name)}</b>\n\n"
+            f"🏖 <i>Ushbu kunda darslar mavjud emas (Dam olish kuni).</i>"
+        )
+
+    try:
+        await callback.message.edit_text(
+            text,
+            reply_markup=get_schedule_view_keyboard(class_name),
+            parse_mode="HTML"
+        )
+    except Exception:
+        await callback.message.answer(
+            text,
+            reply_markup=get_schedule_view_keyboard(class_name),
+            parse_mode="HTML"
+        )
+
+
 
 
 @user_router.message(F.text)

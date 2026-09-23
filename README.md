@@ -7,8 +7,11 @@ Ushbu loyiha **Python**, **aiogram 3.x** va asinxron **SQLite** (`aiosqlite`) yo
 ## 🌟 Asosiy imkoniyatlar
 
 ### 👤 Foydalanuvchilar (O'quvchilar) uchun:
-- **`/start` va `/help`**: Botdan foydalanish bo'yicha to'liq o'zbekcha yo'riqnoma.
+- **`/start` va `/help`**: Botdan foydalanish bo'yicha to'liq o'zbekcha yo'riqnoma va asosiy menyu:
+  - 📝 **Test tekshirish**: test javoblarini tezkor topshirish;
+  - 📅 **Dars jadvali**: 5-11-sinflar kesimida kunlar bo'yicha haftalik darslar jadvalini ko'rish.
 - **Javoblarni tezkor tekshirish**: `test_kodi*javoblar` formatida yuboriladi (masalan: `101*abcdabcd...`).
+- **Dars jadvali moduli**: `schedule.json` faylidan barcha 15 ta sinf (5-A dan 11-T gacha) darslarini interaktiv tugmalar orqali qulay ko'rsatish.
 - **Xatoliklarga chidamli**: Katta-kichik harflar (A/a) e'tiborga olinmaydi, keraksiz probellar tozalanadi.
 - **Savollar sonini nazorat qilish**: Javoblar soni testdagi savollar soniga teng bo'lmasa, aniq farq (kam yoki ortiqcha ekanligi) ko'rsatiladi.
 - **Batafsil natijalar va tahlil**:
@@ -66,7 +69,14 @@ BOT_TOKEN=1234567890:ABCdefGHIjklMNOpqrsTUVwxyz
 
 # O'zingizning Telegram user ID raqamingiz (@userinfobot orqali bilish mumkin)
 ADMIN_ID=123456789
+
+# Majburiy kanal a'zoligi (subscription check):
+# Bot ushbu kanalda ADMINISTRATOR bo'lishi shart!
+CHANNEL_ID=@kanal_username
+CHANNEL_USERNAME=@kanal_username
 ```
+
+> ⚠️ **Muhim:** Bot kanal a'zoligini tekshira olishi uchun botni kanalingizga **Administrator** (Admin) qilib qo'shishingiz shart. Agar kanal sozlamalari (`CHANNEL_ID`) bo'sh qoldirilsa, majburiy tekshiruv avtomatik tarzda o'chiriladi.
 
 ### 4. Botni ishga tushirish:
 ```bash
@@ -75,8 +85,21 @@ python main.py
 
 ---
 
+## 📢 Majburiy kanal a'zoligi qanday ishlaydi?
+1. Foydalanuvchi `/start` yoki istalgan xabar yozganda, `SubscriptionMiddleware` uning kanaldagi holatini `get_chat_member` orqali tekshiradi.
+2. Agar foydalanuvchi kanalga a'zo bo'lmasa:
+   - Unga kanalga o'tish tugmasi (`Inline URL`) va **«✅ Obunani tekshirish»** (`callback_data="check_sub"`) tugmasi ko'rsatiladi.
+   - Obuna bo'lmaguncha botning boshqa buyruqlari va test topshirish imkoniyatlari bloklanadi.
+3. Foydalanuvchi **«✅ Obunani tekshirish»** tugmasini bosganda:
+   - Agar a'zo bo'lgan bo'lsa: ogohlantirish o'chirilib, asosiy menyu ochiladi.
+   - Agar hali ham a'zo bo'lmasa: Telegram ogohlantirish oynasi (alert) orqali obuna bo'lish talab qilinadi.
+4. Bot admini (`ADMIN_ID`) testlarni boshqarishda ushbu tekshiruvdan ozod etilgan.
+
+---
+
 ## 🧪 Avtomatlashtirilgan testlarni tekshirish:
-Loyihaning barcha funksiyalarini va ma'lumotlar bazasini tekshirish uchun:
+Loyihaning barcha funksiyalarini (baza, test tekshirish va kanal a'zoligi mantig'i) tekshirish uchun:
 ```bash
 python test_system.py
 ```
+
